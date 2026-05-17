@@ -3,12 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Billionaires</title>
+    <title>BNP & HCI</title>
 </head>
 <body>
+
     <form method="POST">
-        <input type="text" name="billionaire" placeholder="Sök på år eller namn">
-        <input type="submit" value="Skicka">
+        <input type="text" name="bnp" placeholder="Country: ">
+        <input type="submit" value="Send">
     </form>
+
+    <img src="{{ url_for('static', filename=image) }}">
+
 </body>
 </html>
