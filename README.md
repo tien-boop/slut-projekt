@@ -1,2 +1,2 @@
 # slut-projekt
-elon musk
+gdp-growth
