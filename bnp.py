@@ -10,12 +10,13 @@ app = Flask(__name__)
 def home():
     return render_template("search.html")
 
-
+#Ta emot formulär-informationen
 @app.route("/", methods=["POST"])
 def show():
 
     if request.method == "POST":
 
+        #Tar emot imput
         country = request.form["bnp"].strip().lower()
 
         with open("bnp.csv", encoding='utf-8-sig') as file:
@@ -39,18 +40,24 @@ def show():
                         #Lägger bara till riktiga siffror
                         if result != "":
 
+                            #Lägger till året/värdet på det året i years- resp bnp-listan
                             years.append(year)
                             bnp.append(float(result))
 
+                    #Skapar grafen 
                     plt.plot(years, bnp)
+                    plt.xlabel("Year")
+                    plt.ylabel("GDP per capita")
+                    plt.title("GDP-growth")
                     plt.savefig('static/graph.png')
                     plt.close()
 
-                    return render_template("result.html", image="graph.png")
+                    #Visar den färdiga bilden när man klicker på Send
+                    return render_template("search.html", image="graph.png")
 
+            #Ifall det inte finns det landet i CSV 
             return 'Not founded'
         
-
 
 if __name__ == "__main__":
     app.run(debug=True)
