@@ -19,7 +19,7 @@ def show():
         #Tar emot imput
         country = request.form["bnp"].strip().lower()
 
-        with open("bnp.csv", encoding='utf-8-sig') as file:
+        with open("csv/bnp.csv", encoding='utf-8-sig') as file:
             reader = csv.DictReader(file)
 
             #Läser innehållet i csv
